@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Al-Amaan Kebabs & More — Authentic Kebabs in Bhopal</title>
+  <meta name="description" content="Al-Amaan Kebabs & More — Authentic kebabs, tandoori, and grills in Bhopal. Order online or book a table.">
+  <meta property="og:title" content="Al-Amaan Kebabs & More" />
+  <meta property="og:description" content="Authentic kebabs and tandoori specialties in Bhopal. Order now or visit us." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="images/og-image.jpg" />
+  <link rel="icon" href="images/favicon.ico" />
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- AOS (Animate On Scroll) -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    /* ---------- Base & Brand ---------- */
+    :root {
+      --brand-red: #ff2e2e;
+      --brand-red-dark: #a80000;
+      --bg-dark: #0d0d0d;
+      --card-dark: #111;
+      --muted: #d1d1d1;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg-dark);
+      color: #f5f5f5;
+      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      overflow-x: hidden;
+    }
+
+    /* ---------- Navbar ---------- */
+    .navbar {
+      transition: background-color 300ms, box-shadow 300ms, padding 300ms;
+      background: transparent;
+      padding: 18px 0;
+    }
+    .navbar.solid {
+      background: rgba(0,0,0,0.95);
+      box-shadow: 0 6px 24px rgba(0,0,0,0.6);
+      padding: 10px 0;
+      backdrop-filter: blur(6px);
+    }
+    .navbar-brand { color: var(--brand-red); font-weight: 700; display:flex; gap:12px; align-items:center;}
+    .navbar-brand img { width:44px; height:44px; border-radius:8px; object-fit:cover; }
+    .nav-link { color: #f5f5f5 !important; font-weight:500; }
+    .nav-link:hover { color: var(--brand-red) !important; }
+
+    /* CTA button */
+    .btn-order {
+      background: linear-gradient(90deg, var(--brand-red), var(--brand-red-dark));
+      border: none;
+      color: #fff;
+      padding: 8px 18px;
+      border-radius: 30px;
+      box-shadow: 0 6px 18px rgba(255,0,0,0.18);
+      font-weight:600;
+    }
+    .btn-order:hover { transform: translateY(-2px); }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      position: relative;
+      height: 92vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      overflow:hidden;
+    }
+    .hero video {
+      position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:1;
+    }
+    .hero::after {
+      content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.65)); z-index:2;
+    }
+    .hero-content { position:relative; z-index:3; color:#fff; max-width:1100px; padding:20px; }
+    .hero h1 { color:var(--brand-red); font-size:3.4rem; font-weight:800; text-shadow:0 8px 30px rgba(168,0,0,0.12); }
+    .hero p { color:#f2f2f2; font-size:1.15rem; margin:12px 0 18px; }
+
+    /* CTAs in hero */
+    .hero .ctas { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+
+    /* ---------- Sections ---------- */
+    section { padding:72px 0; }
+    section h2 { color:var(--brand-red); font-weight:700; margin-bottom:28px; }
+
+    /* About */
+    #about { background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent); }
+    #about .card { background: linear-gradient(180deg, #0f0f0f, #141414); border:1px solid rgba(255,0,0,0.06); }
+
+    /* ---------- Menu ---------- */
+    .menu-controls .nav-pills .nav-link { background:transparent; color:#f5f5f5; border:1px solid rgba(255,255,255,0.03); }
+    .menu-controls .nav-pills .nav-link.active { background: linear-gradient(90deg,var(--brand-red),var(--brand-red-dark)); color:#fff; border:none; }
+
+    .dish-card {
+      background: linear-gradient(180deg, #0e0e0e, #121212);
+      border-radius:12px;
+      border:1px solid rgba(255,0,0,0.06);
+      padding:14px;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .dish-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(168,0,0,0.08); }
+    .dish-img { height:140px; width:100%; object-fit:cover; border-radius:8px; }
+
+    .dish-meta { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+    .dish-price { color: var(--brand-red); font-weight:700; font-size:1.05rem; }
+
+    /* ---------- Gallery ---------- */
+    .gallery-img { border-radius:10px; transition: transform .35s ease, box-shadow .35s ease; cursor:pointer; }
+    .gallery-img:hover { transform: scale(1.03); box-shadow: 0 18px 40px rgba(255,0,0,0.08); }
+
+    /* ---------- Contact ---------- */
+    #contact .contact-card { background: linear-gradient(180deg,#0f0f0f,#100a0a); border:1px solid rgba(255,0,0,0.06); padding:20px; border-radius:12px; }
+
+    /* ---------- Footer ---------- */
+    footer { background:#000; color:var(--muted); padding:28px 0; border-top:1px solid rgba(255,0,0,0.08); }
+    footer .social a { color:var(--brand-red); margin:0 8px; font-size:1.2rem; }
+    footer small { display:block; margin-top:10px; color:#9a9a9a; }
+
+  </style>
+</head>
+<body>
+
+  <!-- Structured Data (Restaurant) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Al-Amaan Kebabs & More",
+    "image": "https://example.com/images/og-image.jpg",
+    "@id": "",
+    "url": "https://alaamankebabs.com",
+    "telephone": "+919753100352",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Sultania Rd, Nakkar Khana, Peer Gate Area",
+      "addressLocality": "Bhopal",
+      "addressRegion": "Madhya Pradesh",
+      "postalCode": "462001",
+      "addressCountry": "IN"
+    },
+    "priceRange": "₹₹",
+    "servesCuisine": ["Indian","Mughlai","Tandoori"]
+  }
+  </script>
+
+  <!-- NAVBAR -->
+  <nav id="mainNavbar" class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="images/logo.jpeg" alt="Al-Amaan logo">
+        <div>
+          <div style="font-size:1rem">Al-Amaan</div>
+          <small style="display:block; margin-top:-2px; color:#f1f1f1; font-weight:500;">Kebabs & More</small>
+        </div>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navCollapse">
+        <span class="navbar-toggler-icon"><i class="fas fa-bars text-danger"></i></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navCollapse">
+        <ul class="navbar-nav ms-auto align-items-lg-center me-3">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
+          <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+
+        <!-- Social icons + Order -->
+        <div class="d-flex align-items-center">
+          <div class="me-3 d-none d-lg-flex align-items-center">
+            <a href="https://www.facebook.com/" class="me-2" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" style="color:var(--brand-red)"></i></a>
+            <a href="https://www.instagram.com/alamaanbhopalofficial?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="me-2" target="_blank" rel="noopener"><i class="fab fa-instagram fa-lg" style="color:var(--brand-red)"></i></a>
+            <a href="https://www.youtube.com/" class="me-2" target="_blank" rel="noopener"><i class="fab fa-youtube fa-lg" style="color:var(--brand-red)"></i></a>
+          </div>
+          <a href="https://wa.me/919753100352" target="_blank" class="btn btn-order">Order Now <i class="fab fa-whatsapp ms-2"></i></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO (kept your video as requested) -->
+  <header class="hero">
+    <video autoplay muted loop playsinline>
+      <!-- keep your video file unchanged -->
+      <source src="video/Butter Chicken.mp4" type="video/mp4" />
+      <!-- fallback image -->
+      Your browser does not support the video tag.
+    </video>
+
+    <div class="hero-content" data-aos="fade-up">
+      <h1>Authentic Kebabs & Tandoori — Made with Fire & Love</h1>
+      <p>Experience slow-cooked, charcoal-grilled flavors from our family kitchen to your table in Bhopal.</p>
+      <div class="ctas mt-3">
+        <a href="#menu" class="btn btn-light btn-lg" style="border-radius:30px; color:#111; font-weight:700;">Explore Menu</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="row align-items-center gx-5">
+        <div class="col-md-6" data-aos="fade-right">
+          <div class="card border-0 p-3 card-shadow">
+            <img src="images/chef.jpg" alt="Chef at Al-Amaan" class="img-fluid rounded" loading="lazy">
+          </div>
+        </div>
+        <div class="col-md-6" data-aos="fade-left">
+          <h2>Our Story</h2>
+          <p style="color:var(--muted); line-height:1.8;">
+            At Al-Amaan Kebabs & More, we celebrate generations of grilling — slow-marinated meats, charcoal-fired grills, and recipes handed down through family kitchens. We blend tradition with modern flavors for an unforgettable dining experience.
+          </p>
+          <p style="color:var(--muted);"><strong>Open daily:</strong> 6:00 PM – 11:00 PM</p>
+          <a href="#contact" class="btn btn-outline-light" style="border-radius:30px;">Book a Table</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU (with category tabs and order buttons) -->
+  <section id="menu" style="background:#070707;">
+    <div class="container">
+      <h2 data-aos="fade-up">Our Menu</h2>
+
+
+      <div class="tab-content" id="menuContent">
+        <!-- All (shows everything) -->
+        <div class="tab-pane fade show active" id="all">
+          <div class="row g-4">
+            <!-- Dish 1 -->
+            <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="50">
+              <div class="dish-card">
+                <img src="images/Alamaan Speacial thali.jpg" alt="Alamaan Special Thali" class="dish-img mb-3" loading="lazy">
+                <h5 class="mb-1">Alamaan Special Thali</h5>
+                <p style="color:var(--muted); margin-bottom:10px;">Signature platter of kebabs, curries & breads — perfect for a feast.</p>
+                <div class="dish-meta">
+                  <div class="dish-price">₹499</div>
+                  <div>
+                    <a href="#" class="btn btn-sm btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#menuModal1">View</a>
+                    <button class="btn btn-order btn-sm" onclick="orderWhatsApp('Alamaan Special Thali', '₹499')">Order</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dish 2 -->
+            <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="80">
+              <div class="dish-card">
+                <img src="images/Chicken Biryani .jpg" alt="Chicken Biryani" class="dish-img mb-3" loading="lazy">
+                <h5 class="mb-1">Chicken Biryani</h5>
+                <p style="color:var(--muted); margin-bottom:10px;">Long-grain rice layered with tender chicken and secret spices.</p>
+                <div class="dish-meta">
+                  <div class="dish-price">₹249</div>
+                  <div>
+                    <a href="#" class="btn btn-sm btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#menuModal2">View</a>
+                    <button class="btn btn-order btn-sm" onclick="orderWhatsApp('Chicken Biryani', '₹249')">Order</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dish 3 -->
+            <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="110">
+              <div class="dish-card">
+                <img src="images/Chicken boneless tikka.jpg" alt="Chicken Boneless Tikka" class="dish-img mb-3" loading="lazy">
+                <h5 class="mb-1">Chicken Boneless Tikka</h5>
+                <p style="color:var(--muted); margin-bottom:10px;">Grilled to golden perfection with rich marinade.</p>
+                <div class="dish-meta">
+                  <div class="dish-price">₹299</div>
+                  <div>
+                    <a href="#" class="btn btn-sm btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#menuModal3">View</a>
+                    <button class="btn btn-order btn-sm" onclick="orderWhatsApp('Chicken Boneless Tikka', '₹299')">Order</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dish 4 -->
+            <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="140">
+              <div class="dish-card">
+                <img src="images/Chicken Malai tangdi .jpg" alt="Chicken Malai Tangdi" class="dish-img mb-3" loading="lazy">
+                <h5 class="mb-1">Chicken Malai Tangdi</h5>
+                <p style="color:var(--muted); margin-bottom:10px;">Creamy, tender drumsticks full of flavor.</p>
+                <div class="dish-meta">
+                  <div class="dish-price">₹259</div>
+                  <div>
+                    <a href="#" class="btn btn-sm btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#menuModal4">View</a>
+                    <button class="btn btn-order btn-sm" onclick="orderWhatsApp('Chicken Malai Tangdi', '₹259')">Order</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dish 5 -->
+            <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="170">
+              <div class="dish-card">
+                <img src="images/Malai Seekh Kebab.jpg" alt="Malai Seekh Kebab" class="dish-img mb-3" loading="lazy">
+                <h5 class="mb-1">Malai Seekh Kebab</h5>
+                <p style="color:var(--muted); margin-bottom:10px;">Soft seekh kebabs marinated in cream & herbs.</p>
+                <div class="dish-meta">
+                  <div class="dish-price">₹199</div>
+                  <div>
+                    <a href="#" class="btn btn-sm btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#menuModal5">View</a>
+                    <button class="btn btn-order btn-sm" onclick="orderWhatsApp('Malai Seekh Kebab', '₹199')">Order</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dish 6 -->
+            <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+              <div class="dish-card">
+                <img src="images/Mutton Dry seekh Kebab.jpg" alt="Mutton Dry Seekh Kebab" class="dish-img mb-3" loading="lazy">
+                <h5 class="mb-1">Mutton Dry Seekh Kebab</h5>
+                <p style="color:var(--muted); margin-bottom:10px;">Chargrilled mutton seekh kebabs — authentic taste.</p>
+                <div class="dish-meta">
+                  <div class="dish-price">₹299</div>
+                  <div>
+                    <a href="#" class="btn btn-sm btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#menuModal6">View</a>
+                    <button class="btn btn-order btn-sm" onclick="orderWhatsApp('Mutton Dry Seekh Kebab', '₹299')">Order</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dish 7 -->
+            <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="230">
+              <div class="dish-card">
+                <img src="images/Rumali Roti .jpg" alt="Rumali Roti" class="dish-img mb-3" loading="lazy">
+                <h5 class="mb-1">Rumali Roti</h5>
+                <p style="color:var(--muted); margin-bottom:10px;">Paper-thin soft roti — pairs with every kebab.</p>
+                <div class="dish-meta">
+                  <div class="dish-price">₹49</div>
+                  <div>
+                    <a href="#" class="btn btn-sm btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#menuModal7">View</a>
+                    <button class="btn btn-order btn-sm" onclick="orderWhatsApp('Rumali Roti', '₹49')">Order</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dish 8 -->
+<div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="260">
+  <div class="dish-card">
+    <img src="images/Chicken Korma .jpg" alt="Chicken Korma" class="dish-img mb-3" loading="lazy">
+    <h5 class="mb-1">Chicken Korma</h5>
+    <p style="color:var(--muted); margin-bottom:10px;">
+      A Mughlai classic — tender chicken in rich, spiced yogurt gravy with nuts and saffron.
+    </p>
+    <div class="dish-meta">
+      <div class="dish-price">₹249</div>
+      <div>
+        <a href="#" class="btn btn-sm btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#menuModal8">View</a>
+        <button class="btn btn-order btn-sm" onclick="orderWhatsApp('Chicken Korma', '₹249')">Order</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Dish 9 -->
+<div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="290">
+  <div class="dish-card">
+    <img src="images/Chicken Dry seekh kebab .jpg" alt="Chicken Dry Seekh Kebab" class="dish-img mb-3" loading="lazy">
+    <h5 class="mb-1">Chicken Dry Seekh Kebab</h5>
+    <p style="color:var(--muted); margin-bottom:10px;">
+      Minced chicken seasoned with aromatic spices, grilled to smoky perfection.
+    </p>
+    <div class="dish-meta">
+      <div class="dish-price">₹199</div>
+      <div>
+        <a href="#" class="btn btn-sm btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#menuModal9">View</a>
+        <button class="btn btn-order btn-sm" onclick="orderWhatsApp('Chicken Dry Seekh Kebab', '₹199')">Order</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+          </div> <!-- /row -->
+        </div> <!-- /tab-pane all -->
+
+ 
+
+  <!-- CONTACT -->
+  <section id="contact" style="padding-bottom:100px;">
+    <div class="container">
+      <h2 data-aos="fade-up">Contact & Location</h2>
+      <div class="row gy-4">
+        <div class="col-lg-6" data-aos="fade-right">
+          <div class="contact-card p-3 contact-card">
+            <h5 style="color:var(--brand-red);">Visit Us</h5>
+            <p style="color:var(--muted)"><i class="fas fa-map-marker-alt me-2"></i> Sultania Rd, Nakkar Khana, Peer Gate Area, Bhopal, MP 462001</p>
+            <p style="color:var(--muted)"><i class="fas fa-clock me-2"></i> Mon–Sun: 6:00 PM — 11:00 PM</p>
+            <p style="color:var(--muted)"><i class="fas fa-phone me-2"></i> +91 9717416604</p>
+
+            <!-- Google Maps embed (replace the src with your map link) -->
+            <div class="mt-3" style="border-radius:8px; overflow:hidden;">
+              <iframe loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!..." width="100%" height="220" style="border:0;" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6" data-aos="fade-left">
+          <div class="contact-card p-3">
+            <h5 style="color:var(--brand-red);">Message Us</h5>
+            <p style="color:var(--muted)">Send a quick message and we will reply on WhatsApp.</p>
+
+            <!-- Contact form (client-side: opens WhatsApp) -->
+            <form id="contactForm" onsubmit="submitContactForm(event)">
+              <div class="mb-2">
+                <label class="form-label visually-hidden" for="name">Name</label>
+                <input id="name" class="form-control" placeholder="Your name" required />
+              </div>
+              <div class="mb-2">
+                <label class="form-label visually-hidden" for="phone">Phone</label>
+                <input id="phone" class="form-control" placeholder="Phone (optional)" />
+              </div>
+              <div class="mb-2">
+                <label class="form-label visually-hidden" for="message">Message</label>
+                <textarea id="message" class="form-control" rows="4" placeholder="Your message..." required></textarea>
+              </div>
+              <div class="d-flex gap-2">
+                <button class="btn btn-order" type="submit">Send on WhatsApp <i class="fab fa-whatsapp ms-2"></i></button>
+                <button class="btn btn-outline-light" type="reset">Reset</button>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container text-center">
+      <div class="d-flex justify-content-center align-items-center gap-3 mb-2">
+        <a href="https://www.facebook.com/" target="_blank" class="social"><i class="fab fa-facebook fa-2x"></i></a>
+        <a href="https://www.instagram.com/alamaanbhopalofficial?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="social"><i class="fab fa-instagram fa-2x"></i></a>
+        <a href="https://www.youtube.com/" target="_blank" class="social"><i class="fab fa-youtube fa-2x"></i></a>
+      </div>
+      <p style="margin:0; color:var(--muted)">© 2025 Al-Amaan Kebabs & More — All rights reserved.</p>
+      <small>Designed with ❤️ by Hamza</small>
+    </div>
+  </footer>
+
+  <!-- ---------- MENU MODALS (7) ---------- -->
+  <div class="modal fade" id="menuModal1" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content" style="background:#111; color:#fff; border:1px solid rgba(255,0,0,0.12);">
+        <div class="modal-body text-center p-4">
+          <img src="images/Alamaan Speacial thali.jpg" alt="" class="img-fluid rounded mb-3" />
+          <h5>Alamaan Special Thali</h5>
+          <p class="text-muted">A royal platter featuring our best kebabs, curries, and sides — perfect for a feast.</p>
+          <div class="mt-3">
+            <button class="btn btn-order" onclick="orderWhatsApp('Alamaan Special Thali','₹499')">Order Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Repeat similar modal structure for menuModal2..menuModal7 -->
+  <div class="modal fade" id="menuModal2" tabindex="-1"><div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content" style="background:#111;"><div class="modal-body text-center p-4"><img src="images/Chicken Biryani .jpg" class="img-fluid rounded mb-3"><h5>Chicken Biryani</h5><p class="text-muted">Long-grain rice layered with tender chicken and secret spices.</p><div class="mt-3"><button class="btn btn-order" onclick="orderWhatsApp('Chicken Biryani','₹249')">Order Now</button></div></div></div></div></div>
+
+  <div class="modal fade" id="menuModal3" tabindex="-1"><div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content" style="background:#111;"><div class="modal-body text-center p-4"><img src="images/Chicken boneless tikka.jpg" class="img-fluid rounded mb-3"><h5>Chicken Boneless Tikka</h5><p class="text-muted">Marinated chicken chunks grilled with smoky perfection.</p><div class="mt-3"><button class="btn btn-order" onclick="orderWhatsApp('Chicken Boneless Tikka','₹299')">Order Now</button></div></div></div></div></div>
+
+  <div class="modal fade" id="menuModal4" tabindex="-1"><div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content" style="background:#111;"><div class="modal-body text-center p-4"><img src="images/Chicken Malai tangdi .jpg" class="img-fluid rounded mb-3"><h5>Chicken Malai Tangdi</h5><p class="text-muted">Succulent chicken legs infused with creamy spices.</p><div class="mt-3"><button class="btn btn-order" onclick="orderWhatsApp('Chicken Malai Tangdi','₹259')">Order Now</button></div></div></div></div></div>
+
+  <div class="modal fade" id="menuModal5" tabindex="-1"><div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content" style="background:#111;"><div class="modal-body text-center p-4"><img src="images/Malai Seekh Kebab.jpg" class="img-fluid rounded mb-3"><h5>Malai Seekh Kebab</h5><p class="text-muted">Soft, juicy seekh kebabs brushed with creamy malai.</p><div class="mt-3"><button class="btn btn-order" onclick="orderWhatsApp('Malai Seekh Kebab','₹199')">Order Now</button></div></div></div></div></div>
+
+  <div class="modal fade" id="menuModal6" tabindex="-1"><div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content" style="background:#111;"><div class="modal-body text-center p-4"><img src="images/Mutton Dry seekh Kebab.jpg" class="img-fluid rounded mb-3"><h5>Mutton Dry Seekh Kebab</h5><p class="text-muted">Chargrilled mutton seekh kebabs spiced just right.</p><div class="mt-3"><button class="btn btn-order" onclick="orderWhatsApp('Mutton Dry Seekh Kebab','₹299')">Order Now</button></div></div></div></div></div>
+
+  <div class="modal fade" id="menuModal7" tabindex="-1"><div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content" style="background:#111;"><div class="modal-body text-center p-4"><img src="images/Rumali Roti .jpg" class="img-fluid rounded mb-3"><h5>Rumali Roti</h5><p class="text-muted">Paper-thin soft roti — light, airy, and perfect with any kebab.</p><div class="mt-3"><button class="btn btn-order" onclick="orderWhatsApp('Rumali Roti','₹49')">Order Now</button></div></div></div></div></div>
+
+  <!-- Lightbox modal for gallery -->
+  <div class="modal fade" id="lightboxModal" tabindex="-1"><div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content" style="background:#000;"><div class="modal-body p-0"><img src="" id="lightboxImage" class="img-fluid w-100" alt="Gallery image"></div></div></div></div>
+
+  <!-- Floating WhatsApp -->
+  <a class="whatsapp-float" href="https://wa.me/9717416604" target="_blank" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Bootstrap & AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+  <script>
+    AOS.init({ duration: 700, once: true });
+
+    // Navbar becomes solid on scroll
+    const navbar = document.getElementById('mainNavbar');
+    function checkScroll() {
+      if (window.scrollY > 60) navbar.classList.add('solid'); else navbar.classList.remove('solid');
+    }
+    checkScroll();
+    window.addEventListener('scroll', checkScroll);
+
+    // Order on WhatsApp function (prefills message)
+    function orderWhatsApp(itemName, price) {
+      const phone = '9717416604';
+      const text = encodeURIComponent(`Hi Al-Amaan, I'd like to order: ${itemName} - ${price}. Please confirm availability and ETA. Thanks!`);
+      window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
+    }
+
+    // Contact form: opens WhatsApp with message
+    function submitContactForm(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const contactText = encodeURIComponent(`Hello, my name is ${name} (${phone || 'no phone provided'}). Message: ${message}`);
+      window.open(`https://wa.me/919753100352?text=${contactText}`, '_blank');
+    }
+
+    // Gallery lightbox behavior
+    document.querySelectorAll('.gallery-img').forEach(img => {
+      img.addEventListener('click', (e) => {
+        const src = e.currentTarget.getAttribute('data-src') || e.currentTarget.src;
+        document.getElementById('lightboxImage').src = src;
+      });
+    });
+
+    // Improve accessibility: close modals on Esc handled by Bootstrap automatically
+  </script>
+</body>
+</html>
