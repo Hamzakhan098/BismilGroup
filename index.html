@@ -18,25 +18,21 @@
   --bg-dark: #0d0d0d;
   --muted: #d1d1d1;
 }
-
 body {
   background: var(--bg-dark);
   color: #fff;
   font-family: "Poppins", sans-serif;
   overflow-x: hidden;
 }
-
 .navbar {
   background: transparent;
   padding: 18px 0;
   transition: 0.3s ease;
 }
-
 .navbar.solid {
   background: rgba(0,0,0,0.95);
   padding: 10px 0;
 }
-
 .navbar-brand {
   color: var(--brand-red);
   font-weight: 700;
@@ -44,17 +40,14 @@ body {
   align-items: center;
   gap: 10px;
 }
-
 .navbar-brand img {
   width: 44px;
   height: 44px;
   border-radius: 8px;
   object-fit: cover;
 }
-
 .nav-link { color: #fff !important; }
 .nav-link:hover { color: var(--brand-red) !important; }
-
 .btn-order {
   background: linear-gradient(90deg,var(--brand-red),var(--brand-red-dark));
   border: none;
@@ -63,7 +56,6 @@ body {
   border-radius: 30px;
   font-weight: 600;
 }
-
 .hero {
   position: relative;
   height: 90vh;
@@ -72,7 +64,6 @@ body {
   justify-content: center;
   text-align: center;
 }
-
 .hero video {
   position: absolute;
   inset: 0;
@@ -80,48 +71,39 @@ body {
   height: 100%;
   object-fit: cover;
 }
-
 .hero::after {
   content: "";
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,0.6);
 }
-
 .hero-content {
   position: relative;
   z-index: 2;
 }
-
 .hero h1 {
   color: var(--brand-red);
   font-weight: 800;
 }
-
 section { padding: 70px 0; }
 h2 { color: var(--brand-red); font-weight: 700; }
-
 .dish-card {
   background: #111;
   border-radius: 12px;
   padding: 15px;
   transition: 0.3s;
 }
-
 .dish-card:hover { transform: translateY(-6px); }
-
 .dish-img {
   width: 100%;
   height: 160px;
   object-fit: cover;
   border-radius: 8px;
 }
-
 .dish-price {
   color: var(--brand-red);
   font-weight: 700;
 }
-
 .whatsapp-float {
   position: fixed;
   bottom: 20px;
@@ -137,7 +119,6 @@ h2 { color: var(--brand-red); font-weight: 700; }
   font-size: 26px;
   z-index: 999;
 }
-
 footer {
   background: #000;
   padding: 25px 0;
@@ -149,11 +130,10 @@ footer {
 
 <body>
 
-<!-- NAVBAR -->
 <nav id="mainNavbar" class="navbar navbar-expand-lg fixed-top">
 <div class="container">
   <a class="navbar-brand" href="#">
-    <img src="./images/logo.jpeg" alt="logo">
+    <img src="images/logo.jpeg" alt="logo">
     Al-Amaan
   </a>
 
@@ -171,10 +151,9 @@ footer {
 </div>
 </nav>
 
-<!-- HERO -->
 <header class="hero">
 <video autoplay muted loop playsinline>
-  <source src="./video/butter-chicken.mp4" type="video/mp4">
+  <source src="video/Butter Chicken.mp4" type="video/mp4">
 </video>
 
 <div class="hero-content">
@@ -183,132 +162,3 @@ footer {
   <a href="#menu" class="btn btn-light mt-3">Explore Menu</a>
 </div>
 </header>
-
-<!-- MENU -->
-<section id="menu">
-<div class="container">
-<h2 class="text-center mb-5">Our Menu</h2>
-
-<div class="row g-4">
-
-<div class="col-sm-6 col-lg-4">
-<div class="dish-card">
-<img src="./images/chicken-biryani.jpg" class="dish-img mb-3">
-<h5>Chicken Biryani</h5>
-<div class="d-flex justify-content-between align-items-center">
-<div class="dish-price">₹249</div>
-<button class="btn btn-order btn-sm" onclick="orderWhatsApp('Chicken Biryani','₹249')">Order</button>
-</div>
-</div>
-</div>
-
-<div class="col-sm-6 col-lg-4">
-<div class="dish-card">
-<img src="./images/chicken-korma.jpg" class="dish-img mb-3">
-<h5>Chicken Korma</h5>
-<div class="dish-price">₹249</div>
-</div>
-</div>
-
-<div class="col-sm-6 col-lg-4">
-<div class="dish-card">
-<img src="./images/chicken-boneless-tikka.jpg" class="dish-img mb-3">
-<h5>Chicken Boneless Tikka</h5>
-<div class="dish-price">₹299</div>
-</div>
-</div>
-
-<div class="col-sm-6 col-lg-4">
-<div class="dish-card">
-<img src="./images/chicken-malai-tangdi.jpg" class="dish-img mb-3">
-<h5>Chicken Malai Tangdi</h5>
-<div class="dish-price">₹259</div>
-</div>
-</div>
-
-<div class="col-sm-6 col-lg-4">
-<div class="dish-card">
-<img src="./images/chicken-dry-seekh-kebab.jpg" class="dish-img mb-3">
-<h5>Chicken Dry Seekh Kebab</h5>
-<div class="dish-price">₹199</div>
-</div>
-</div>
-
-<div class="col-sm-6 col-lg-4">
-<div class="dish-card">
-<img src="./images/malai-seekh-kebab.jpg" class="dish-img mb-3">
-<h5>Malai Seekh Kebab</h5>
-<div class="dish-price">₹199</div>
-</div>
-</div>
-
-<div class="col-sm-6 col-lg-4">
-<div class="dish-card">
-<img src="./images/mutton-dry-seekh-kebab.jpg" class="dish-img mb-3">
-<h5>Mutton Dry Seekh Kebab</h5>
-<div class="dish-price">₹299</div>
-</div>
-</div>
-
-<div class="col-sm-6 col-lg-4">
-<div class="dish-card">
-<img src="./images/mutton-malai-seekh-kebab.jpg" class="dish-img mb-3">
-<h5>Mutton Malai Seekh Kebab</h5>
-<div class="dish-price">₹299</div>
-</div>
-</div>
-
-<div class="col-sm-6 col-lg-4">
-<div class="dish-card">
-<img src="./images/rumali-roti.jpg" class="dish-img mb-3">
-<h5>Rumali Roti</h5>
-<div class="dish-price">₹49</div>
-</div>
-</div>
-
-<div class="col-sm-6 col-lg-4">
-<div class="dish-card">
-<img src="./images/alamaan-special-thali.jpg" class="dish-img mb-3">
-<h5>Alamaan Special Thali</h5>
-<div class="dish-price">₹499</div>
-</div>
-</div>
-
-</div>
-</div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-<div class="container text-center">
-<h2>Contact</h2>
-<p>Sultania Rd, Bhopal</p>
-<a href="https://wa.me/919753100352" class="btn btn-order">Chat on WhatsApp</a>
-</div>
-</section>
-
-<footer>
-© 2025 Al-Amaan Kebabs & More
-</footer>
-
-<a class="whatsapp-float" href="https://wa.me/919753100352" target="_blank">
-<i class="fab fa-whatsapp"></i>
-</a>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-<script>
-const navbar = document.getElementById('mainNavbar');
-window.addEventListener('scroll', function() {
-  if (window.scrollY > 50) navbar.classList.add('solid');
-  else navbar.classList.remove('solid');
-});
-function orderWhatsApp(itemName, price) {
-  const phone = "919753100352";
-  const message = `Hi Al-Amaan, I'd like to order: ${itemName} - ${price}.`;
-  window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, "_blank");
-}
-</script>
-
-</body>
-</html>
